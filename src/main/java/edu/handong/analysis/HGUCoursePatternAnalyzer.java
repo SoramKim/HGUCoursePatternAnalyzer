@@ -54,6 +54,7 @@ public class HGUCoursePatternAnalyzer {
 	 * @return
 	 */
 	private Student[] initiateStudentArrayFromLines(String[] lines) {
+		int a = 1;
 		
 		// TODO: implement this method
 		
