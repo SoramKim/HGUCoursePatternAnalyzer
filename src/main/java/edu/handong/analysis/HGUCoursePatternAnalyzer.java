@@ -54,12 +54,20 @@ public class HGUCoursePatternAnalyzer {
 	 * @return
 	 */
 	private Student[] initiateStudentArrayFromLines(String[] lines) {
+		Student student;
+		students= new Student[numOfStudents];
+		String[] tempString;
+		boolean exist;
+		
+		for(i=0; i<lines.length; i++) {
+			tempString = lines[i].trim().split(", ");
+			student = new Student(tempString[1]);
+			
 	
+		}
 		
-		// TODO: implement this method
 		
-		
-		return null;
+		return students;
 	}
 
 	/**
@@ -81,10 +89,17 @@ public class HGUCoursePatternAnalyzer {
 	 * @return
 	 */
 	private Course[] initiateCourseArrayFromLines(String[] lines) {
+		Course course;
+		courses = new Course[numOfCourses];
+		String[] tempString;
+		boolean exit;
 		
-		// TODO: implement this method
+		for(i=0; i<lines.length; i++) {
+			tempString= lines[i].trim().split(", ");
+			course = new Course(tempString[2]);
+		}
 		
-		return null;
+		return courses;
 	}
 
 	/**
