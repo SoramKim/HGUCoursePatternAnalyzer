@@ -58,15 +58,15 @@ public class HGUCoursePatternAnalyzer {
 		students= new Student[numOfStudents];
 		String[] tempString;
 		boolean exist;
-		int count = 0;
-		
-		for(i=0; i<lines.length; i++) {
+		int index = 0;
+
+		for(int i=0; i<lines.length; i++) {
 			tempString = lines[i].trim().split(", ");
 			student = new Student(tempString[1]);
 			exist = studentExist(students, student);
 			if(exist == false) {
-				students[count]= new Student(tempString[1]);
-				count++;
+				students[index]= new Student(tempString[1]);
+				index++;
 			}
 		}
 		
@@ -80,18 +80,19 @@ public class HGUCoursePatternAnalyzer {
 	 * @return boolean
 	 */
 	private boolean studentExist(Student[] students, Student student) {
-		for(i=0; i< students.length; i++) {
+		boolean exist = false;
+		for(int i=0; i< students.length; i++) {
+		
 			if(students[i]== null) {
-				return false;
+				break;
 			}
 			if(student.getName().equals(students[i].getName())) {
-				return true;
+				exist= true;
+				break;
 			}
 		}
-		
-		// TODO: implement this method
-
-		return false;
+		if(exist== true) return true; 
+		else return false;
 	}
 	
 	/**
@@ -105,9 +106,16 @@ public class HGUCoursePatternAnalyzer {
 		String[] tempString;
 		boolean exist;
 		
-		for(i=0; i<lines.length; i++) {
+		int index=0;
+		
+		for(int i=0; i<lines.length; i++){
 			tempString= lines[i].trim().split(", ");
 			course = new Course(tempString[2]);
+			exist = courseExist(courses, course);
+			if(exist == false) {
+				courses[index]= new Course(tempString[2]);
+				index++;
+			}
 		}
 		
 		return courses;
@@ -120,10 +128,19 @@ public class HGUCoursePatternAnalyzer {
 	 * @return boolean
 	 */
 	private boolean courseExist(Course[] courses, Course course) {
-		
-		// TODO: implement this method
 
-		return false;
+		boolean exist= false;
+		for(int i=0; i< courses.length; i++) {
+			if(courses[i] == null) {
+				break;
+			}
+			if(course.getCourseName().equals(courses[i].getCourseName())){
+				exist= true;
+				break;
+			}
+		}
+			if(exist== true) return true;
+			else return false;
 	}
 
 }
