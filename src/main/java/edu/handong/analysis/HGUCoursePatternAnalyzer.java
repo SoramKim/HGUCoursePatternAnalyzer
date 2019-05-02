@@ -58,14 +58,17 @@ public class HGUCoursePatternAnalyzer {
 		students= new Student[numOfStudents];
 		String[] tempString;
 		boolean exist;
+		int count = 0;
 		
 		for(i=0; i<lines.length; i++) {
 			tempString = lines[i].trim().split(", ");
 			student = new Student(tempString[1]);
-			
-	
+			exist = studentExist(students, student);
+			if(exist == false) {
+				students[count]= new Student(tempString[1]);
+				count++;
+			}
 		}
-		
 		
 		return students;
 	}
@@ -77,6 +80,14 @@ public class HGUCoursePatternAnalyzer {
 	 * @return boolean
 	 */
 	private boolean studentExist(Student[] students, Student student) {
+		for(i=0; i< students.length; i++) {
+			if(students[i]== null) {
+				return false;
+			}
+			if(student.getName().equals(students[i].getName())) {
+				return true;
+			}
+		}
 		
 		// TODO: implement this method
 
@@ -92,7 +103,7 @@ public class HGUCoursePatternAnalyzer {
 		Course course;
 		courses = new Course[numOfCourses];
 		String[] tempString;
-		boolean exit;
+		boolean exist;
 		
 		for(i=0; i<lines.length; i++) {
 			tempString= lines[i].trim().split(", ");
